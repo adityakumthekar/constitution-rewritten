@@ -31,19 +31,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: pnpm/action-setup@v4
-        with:
-          version: 9
       - uses: actions/setup-node@v4
         with:
           node-version: "20"
-          cache: pnpm
+          cache: npm
       - name: Install
-        run: pnpm install --frozen-lockfile
+        run: npm ci
       - name: Lint
-        run: pnpm exec turbo run lint --filter=web
+        run: npx turbo run lint --filter=web
       - name: Build
-        run: pnpm exec turbo run build --filter=web
+        run: npx turbo run build --filter=web
         env:
           NEXTAUTH_SECRET: test-secret-for-ci-build-only
           NEXTAUTH_URL: http://localhost:3000

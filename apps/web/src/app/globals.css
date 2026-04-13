@@ -13,6 +13,19 @@
   --primary-foreground: 222 47% 6%;
   --border: 217 33% 17%;
   --radius: 0.75rem;
+
+  /* Abstract Party palette */
+  --ap-bg-primary: #050810;
+  --ap-bg-secondary: #0a0d16;
+  --ap-saffron: #ff9933;
+  --ap-cream: #f5f0e8;
+  --ap-blue: #1448a0;
+  --ap-muted: #8892a4;
+  --ap-glass: rgba(255, 255, 255, 0.04);
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
@@ -24,4 +37,15 @@ body {
     ),
     hsl(var(--background));
   min-height: 100vh;
+}
+
+/* Abstract Party landing — noise overlay */
+.ap-noise::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  pointer-events: none;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
 }

@@ -4,7 +4,7 @@ Monorepo for an AI-assisted, transparent governance platform: Next.js 14 (App Ro
 
 ## Prerequisites
 
-- Node 20+ and [pnpm](https://pnpm.io/) 9
+- Node 20+ and **npm** (9+) or **Yarn Classic** (1.x)
 - Python 3.11+
 - Docker (for local infrastructure)
 
@@ -42,8 +42,10 @@ celery -A abstract_party.workers.celery_app worker --loglevel=info
 
 ```bash
 cp apps/web/.env.example apps/web/.env.local
-pnpm install
-pnpm dev
+# From the repository root (required — workspace packages live under packages/)
+npm install
+npm run dev -w web
+# or: yarn install && yarn workspace web dev
 ```
 
 Set `NEXTAUTH_SECRET` and point `NEXT_PUBLIC_API_URL` at the API (default `http://localhost:8000`).
@@ -60,7 +62,7 @@ Set `NEXTAUTH_SECRET` and point `NEXT_PUBLIC_API_URL` at the API (default `http:
 cd apps/api && export PYTHONPATH=src && pytest && ruff check src tests
 
 # Web (from repo root)
-pnpm exec turbo run lint build --filter=web
+npx turbo run lint build --filter=web
 ```
 
 ---

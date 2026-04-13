@@ -1,25 +1,33 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Cormorant_Garamond, DM_Sans } from "next/font/google";
 
-import { AppShell } from "@/components/app-shell";
 import { Providers } from "@/components/providers";
 
 import "./globals.css";
 
-const inter = Inter({ subsets: ["latin"] });
+const dmSans = DM_Sans({
+  subsets: ["latin"],
+  variable: "--font-dm-sans",
+  weight: ["400", "500", "700"],
+});
+
+const cormorant = Cormorant_Garamond({
+  subsets: ["latin"],
+  variable: "--font-cormorant",
+  weight: ["400", "600", "700"],
+});
 
 export const metadata: Metadata = {
-  title: "abstract-party",
-  description: "AI-assisted transparent governance for India — Phase 1",
+  title: "Abstract Party — AI Governance for India",
+  description:
+    "Open-source AI governance for India — transparent, code-driven administration. Phase 1: LEX legal assistant.",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
-        <Providers>
-          <AppShell>{children}</AppShell>
-        </Providers>
+      <body className={`${dmSans.variable} ${cormorant.variable} font-sans antialiased`}>
+        <Providers>{children}</Providers>
       </body>
     </html>
   );
