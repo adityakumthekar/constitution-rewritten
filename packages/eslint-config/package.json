@@ -1,0 +1,9 @@
+{
+  "name": "@abstract-party/eslint-config",
+  "version": "0.0.0",
+  "private": true,
+  "main": "index.js",
+  "devDependencies": {
+    "eslint-config-next": "^14.2.21"
+  }
+}
